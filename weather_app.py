@@ -1,6 +1,5 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, request
 import requests
-from flask import request
 import os
 
 app = Flask(__name__)
@@ -11,6 +10,7 @@ API_key = os.environ['API_key']
 @app.route('/weather/', methods=['GET'])
 def get_current_weather():
     '''Получение текущих данных о погоде c https://openweathermap.org/'''
+
     city = request.args.get('city')
     params = {
         "q": city,
